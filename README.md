@@ -13,20 +13,6 @@ O objetivo principal do GenroomAPP é simplificar o processo de reserva de salas
 # Estrutura do Projeto
 O projeto GenroomAPP segue a seguinte estrutura de diretórios:
 
-projeto_genroom/
-├── main.py
-├── screens/
-│   ├── home_screen.py
-│   ├── create_room_screen.py
-│   ├── list_rooms_screen.py
-│   ├── reserve_room_screen.py
-│   ├── occupied_rooms_screen.py
-│   ├── reserve_period_screen.py
-│   ├── reserve_resources_screen.py
-│   └── __init__.py
-└── assets/
-    └── fonts/
-        └── your_font.ttf
 # Pré-requisitos
 * Python 3.x
 * Kivy
