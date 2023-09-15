@@ -30,7 +30,7 @@ class HomeScreen(Screen):
             font_size=18,
             size_hint=(None, None),
             size=(400, 50),
-            pos_hint={'center_x': 0.5, 'top': 0.85}
+            pos_hint={'center_x': 0.5, 'top': 0.8}
         )
 
         # Caixas de entrada de usuário e senha
@@ -38,7 +38,7 @@ class HomeScreen(Screen):
             hint_text='Usuário',
             size_hint=(None, None),
             size=(336, 50),
-            pos_hint={'top': 0.8, 'center_x': 0.5}
+            pos_hint={'top': 0.7, 'center_x': 0.5}
         )
 
         password_input = TextInput(
@@ -46,7 +46,7 @@ class HomeScreen(Screen):
             password=True,
             size_hint=(None, None),
             size=(336, 50),
-            pos_hint={'top': 0.7, 'center_x': 0.5}
+            pos_hint={'top': 0.6, 'center_x': 0.5}
         )
 
         # Botão de login
@@ -54,7 +54,7 @@ class HomeScreen(Screen):
             text='Entrar',
             size_hint=(None, None),
             size=(200, 50),
-            pos_hint={'top': 0.6, 'center_x': 0.5}
+            pos_hint={'top': 0.5, 'center_x': 0.5}
         )
         login_button.bind(on_release=self.navigate_to_other_page)
 
@@ -67,4 +67,3 @@ class HomeScreen(Screen):
 
     def navigate_to_other_page(self, instance):
         self.manager.current = 'outra_tela'  # 'outra_tela' é o nome da próxima tela
-
