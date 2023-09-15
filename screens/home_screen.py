@@ -11,7 +11,7 @@ class HomeScreen(Screen):
         self.orientation = 'vertical'
 
         # Fundo azul
-        with self.canvas.before:
+        with self.canvas:
             Color(0.129, 0.588, 0.953, 1)  # Cor azul
             self.background = Rectangle(pos=self.pos, size=self.size)
 
@@ -21,7 +21,7 @@ class HomeScreen(Screen):
             font_size=36,
             size_hint=(None, None),
             size=(400, 100),
-            pos_hint={'center_x': 0.5}
+            pos_hint={'center_x': 0.5, 'top': 0.9}
         )
 
         # Adicione o nome da faculdade como um rótulo
@@ -30,7 +30,7 @@ class HomeScreen(Screen):
             font_size=18,
             size_hint=(None, None),
             size=(400, 50),
-            pos_hint={'center_x': 0.5}
+            pos_hint={'center_x': 0.5, 'top': 0.85}
         )
 
         # Caixas de entrada de usuário e senha
