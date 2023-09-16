@@ -25,7 +25,7 @@ class HomeScreen(Screen):
         layout.add_widget(image)
         
         # imagem no centro em cima
-        image_center = Image(source='Logo.png', size_hint=(None, None), size=(200, 100), pos_hint={'center_x': 0.5, 'top': 0.9})
+        image_center = Image(source='screens/Logo.png', size_hint=(None, None), size=(200, 100), pos_hint={'center_x': 0.5, 'top': 0.9})
         self.add_widget(image_center)
                 
     # janela ajustavel
