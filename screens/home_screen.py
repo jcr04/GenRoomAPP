@@ -4,6 +4,7 @@ from kivy.uix.button import Button
 from kivy.uix.screenmanager import Screen
 from kivy.graphics import Color, Rectangle
 from kivy.uix.textinput import TextInput
+from kivy.uix.image import Image
 
 class HomeScreen(Screen):
     def __init__(self, **kwargs):
@@ -14,22 +15,31 @@ class HomeScreen(Screen):
         with self.canvas:
             Color(0.129, 0.588, 0.953, 1)  # Cor azul
             self.background = Rectangle(pos=self.pos, size=self.size)
-
+            
+        # continuação da tela azul
+        self.bind(size=self.update_background)
+        
+        #imagem - logo
+        layout = BoxLayout(orientation='vertical', size_hint=(None, None), size=(400, 300), spacing=10, pos_hint={'center_x': 0.5})
+        image = Image(source='Logo.png')
+        layout.add_widget(image)
+        
+        # imagem no centro em cima
+        image_center = Image(source='Logo.png', size_hint=(None, None), size=(200, 100), pos_hint={'center_x': 0.5, 'top': 0.9})
+        self.add_widget(image_center)
+                
+    # janela ajustavel
+    def update_background(self, instance, value):
+        self.background.pos = self.pos
+        self.background.size = self.size
+        
+ 
         # Adicione o nome "Genroom" como um rótulo
         genroom_label = Label(
             text='Genroom',
             font_size=36,
             size_hint=(None, None),
             size=(400, 100),
-            pos_hint={'center_x': 0.5, 'top': 0.9}
-        )
-
-        # Adicione o nome da faculdade como um rótulo
-        college_label = Label(
-            text='Faculdade Santa-Terezinha-CEST',
-            font_size=18,
-            size_hint=(None, None),
-            size=(400, 50),
             pos_hint={'center_x': 0.5, 'top': 0.8}
         )
 
@@ -38,7 +48,7 @@ class HomeScreen(Screen):
             hint_text='Usuário',
             size_hint=(None, None),
             size=(336, 50),
-            pos_hint={'top': 0.7, 'center_x': 0.5}
+            pos_hint={'top': 0.6, 'center_x': 0.5}
         )
 
         password_input = TextInput(
@@ -46,7 +56,7 @@ class HomeScreen(Screen):
             password=True,
             size_hint=(None, None),
             size=(336, 50),
-            pos_hint={'top': 0.6, 'center_x': 0.5}
+            pos_hint={'top': 0.5, 'center_x': 0.5}
         )
 
         # Botão de login
@@ -54,16 +64,16 @@ class HomeScreen(Screen):
             text='Entrar',
             size_hint=(None, None),
             size=(200, 50),
-            pos_hint={'top': 0.5, 'center_x': 0.5}
+            pos_hint={'top': 0.4, 'center_x': 0.5}
         )
         login_button.bind(on_release=self.navigate_to_other_page)
 
         # Adicione os widgets à tela
         self.add_widget(genroom_label)
-        self.add_widget(college_label)
         self.add_widget(user_input)
         self.add_widget(password_input)
         self.add_widget(login_button)
 
     def navigate_to_other_page(self, instance):
         self.manager.current = 'outra_tela'  # 'outra_tela' é o nome da próxima tela
+        
