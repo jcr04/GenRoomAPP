@@ -75,5 +75,5 @@ class HomeScreen(Screen):
         self.add_widget(login_button)
 
     def navigate_to_other_page(self, instance):
-        self.manager.current = 'outra_tela'  # 'outra_tela' é o nome da próxima tela
+        self.manager.current = 'create_room'  # 'outra_tela' é o nome da próxima tela
         
