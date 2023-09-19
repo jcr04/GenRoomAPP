@@ -6,6 +6,7 @@ from kivy.uix.screenmanager import Screen
 from kivy.graphics import Color, Rectangle
 from kivy.uix.dropdown import DropDown
 
+
 class CreateRoomScreen(Screen):
     def __init__(self, **kwargs):
         super(CreateRoomScreen, self).__init__(**kwargs)
@@ -102,15 +103,14 @@ class CreateRoomScreen(Screen):
         self.background.size = self.size
     
     def create_room(self, instance):
-        # Aqui, você irá interagir com sua API para criar uma sala com os detalhes fornecidos
-        # por exemplo: chamando a função que cria a sala no Genroom.py
-        # Usando os inputs fornecidos pelo usuário, ex:
         name = self.name_input.text
         room_type = self.room_type_button.text
-        capacity = int(self.capacity_input.text) # Convertendo para int
+        capacity = int(self.capacity_input.text)
         description = self.description_input.text
         room_category = self.category_button.text
-        shift = self.shift_button.text 
+        shift = self.shift_button.text
+        self.manager.current = 'create_room'
+ 
         
     def view_room(self, instance):
         name = self.name_input.text
@@ -118,7 +118,8 @@ class CreateRoomScreen(Screen):
         capacity = self.capacity_input.text
         description = self.description_input.text
         category = self.category_button.text
-        shift = self.shift_button.text    
+        shift = self.shift_button.text
+        self.manager.current = 'list'   
         
     def edith_room(self, instance):
         name = self.name_input.text
@@ -127,6 +128,7 @@ class CreateRoomScreen(Screen):
         description = self.description_input.text
         category = self.category_button.text
         shift = self.shift_button.text
+        self.manager.current = 'update'
         
     def delete_room(self, instance):
         name = self.name_input.text
