@@ -5,21 +5,20 @@ from kivy.uix.textinput import TextInput
 from kivy.uix.screenmanager import Screen
 from kivy.graphics import Color, Rectangle
 from kivy.uix.dropdown import DropDown
-from kivy.uix.button import Button
 
 class CreateRoomScreen(Screen):
     def __init__(self, **kwargs):
         super(CreateRoomScreen, self).__init__(**kwargs)
-
+              
         # Fundo azul
         with self.canvas:
-            Color(0.129, 0.588, 0.953, 1)  # Cor azul
+            Color(0.129, 0.588, 0.953, 1) # Cor azul
             self.background = Rectangle(pos=self.pos, size=self.size)
 
         self.bind(size=self.update_background)
-
+        
         layout = BoxLayout(orientation='vertical', padding=10, spacing=10)
-
+        
         # Nome da sala
         self.name_input = TextInput(hint_text='Nome da sala', size_hint_y=None, height=44)
 
@@ -45,7 +44,7 @@ class CreateRoomScreen(Screen):
             btn = Button(text=category, size_hint_y=None, height=44)
             btn.bind(on_release=lambda btn: self.category_dropdown.select(btn.text))
             self.category_dropdown.add_widget(btn)
-        self.category_button = Button(text='Categoria da Sala', size_hint_y=None, height=44)
+        self.category_button = Button(text='Categoria', size_hint_y=None, height=44)
         self.category_button.bind(on_release=self.category_dropdown.open)
         self.category_dropdown.bind(on_select=lambda instance, x: setattr(self.category_button, 'text', x))
 
@@ -58,25 +57,50 @@ class CreateRoomScreen(Screen):
         self.shift_button = Button(text='Turno', size_hint_y=None, height=44)
         self.shift_button.bind(on_release=self.shift_dropdown.open)
         self.shift_dropdown.bind(on_select=lambda instance, x: setattr(self.shift_button, 'text', x))
-
+               
+        # Layout "botões" de cima
+        # caixa vazia para empurrar os botões para cima "a força"
+        empty_box = BoxLayout(size_hint=(5, None), height=60)
+        layout_button = BoxLayout(orientation='horizontal', padding=10, spacing=10)
+        # 
         # Botão para criar a sala
-        create_button = Button(text="Criar Sala", size_hint_y=None, height=50)
+        create_button = Button(text="Criar Sala", size_hint=(0.3, None), height=50)
         create_button.bind(on_release=self.create_room)
+        
+        # botão Ver
+        view_button = Button(text="Ver", size_hint=(0.3, None), height=50)
+        view_button.bind(on_release=self.view_room)
+        
+        # botão Editar
+        edith_button = Button(text="Editar", size_hint=(0.3, None), height=50)
+        edith_button.bind(on_release=self.edith_room)
+        
+        # botão Deletar
+        delete_button = Button(text="Deletar", size_hint=(0.4, None), height=50)
+        delete_button.bind(on_release=self.delete_room)
 
+        # 
+        layout.add_widget(layout_button)
+        layout_button.add_widget(create_button) # criar
+        layout_button.add_widget(view_button) # ver
+        layout_button.add_widget(edith_button) # editar
+        layout_button.add_widget(delete_button) # deletar
+        
+        # caixa vazia
+        layout.add_widget(empty_box)
         layout.add_widget(self.name_input)
         layout.add_widget(self.room_type_button)
+        layout.add_widget(self.shift_button)
         layout.add_widget(self.capacity_input)
         layout.add_widget(self.description_input)
         layout.add_widget(self.category_button)
-        layout.add_widget(self.shift_button)
-        layout.add_widget(create_button)
-
-        self.add_widget(layout)
-
+        #
+        self.add_widget(layout) 
+               
     def update_background(self, instance, value):
         self.background.pos = self.pos
         self.background.size = self.size
-
+    
     def create_room(self, instance):
         # Aqui, você irá interagir com sua API para criar uma sala com os detalhes fornecidos
         # por exemplo: chamando a função que cria a sala no Genroom.py
@@ -86,7 +110,31 @@ class CreateRoomScreen(Screen):
         capacity = int(self.capacity_input.text) # Convertendo para int
         description = self.description_input.text
         room_category = self.category_button.text
+        shift = self.shift_button.text 
+        
+    def view_room(self, instance):
+        name = self.name_input.text
+        room_type = self.room_type_button.text
+        capacity = self.capacity_input.text
+        description = self.description_input.text
+        category = self.category_button.text
+        shift = self.shift_button.text    
+        
+    def edith_room(self, instance):
+        name = self.name_input.text
+        room_type = self.room_type_button.text
+        capacity = self.capacity_input.text
+        description = self.description_input.text
+        category = self.category_button.text
         shift = self.shift_button.text
         
-        # Se conectar com a API e enviar os dados aqui.
+    def delete_room(self, instance):
+        name = self.name_input.text
+        room_type = self.room_type_button.text
+        capacity = self.capacity_input.text
+        description = self.description_input.text
+        category = self.category_button.text
+        shift = self.shift_button.text
+        
+       # Se conectar com a API e enviar os dados aqui.
         pass

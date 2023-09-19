@@ -21,7 +21,7 @@ class HomeScreen(Screen):
         
         #imagem - logo
         layout = BoxLayout(orientation='vertical', size_hint=(None, None), size=(400, 300), spacing=10, pos_hint={'center_x': 0.5})
-        image = Image(source='Logo.png')
+        image = Image(source='screens\Logo.png')
         layout.add_widget(image)
         
         # imagem no centro em cima
@@ -33,7 +33,6 @@ class HomeScreen(Screen):
         self.background.pos = self.pos
         self.background.size = self.size
         
- 
         # Adicione o nome "Genroom" como um rótulo
         genroom_label = Label(
             text='Genroom',
