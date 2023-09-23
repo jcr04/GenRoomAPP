@@ -128,7 +128,7 @@ class CreateRoomScreen(Screen):
         description = self.description_input.text
         category = self.category_button.text
         shift = self.shift_button.text
-        self.manager.current = 'update'
+        self.manager.current = 'update_room'
         
     def delete_room(self, instance):
         name = self.name_input.text
