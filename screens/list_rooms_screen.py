@@ -129,9 +129,9 @@ class ListRoomsScreen(Screen):
             self.details_label.text = details
 
     def update_box(self, instance, value):
-        self.box_rect.pos = instance.pos
-        self.box_rect.size = instance.size
-        self.box_line.rectangle = (instance.x, instance.y, instance.width, instance.height)
+        self.box_rect.pos = (instance.x - 10, instance.y - 10)  # Ajuste as coordenadas de posição
+        self.box_rect.size = self.box_rect.size = (instance.width + 50, instance.height + 80)  # Ajuste as dimensões
+        self.box_line.rectangle = (instance.x - 10, instance.y - 10, instance.width + 50, instance.height + 80)
 
     def go_back_to_create_room(self, instance):
         # Switch to "create_room" screen
