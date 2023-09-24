@@ -16,7 +16,7 @@ class UpdateRoomScreen(Screen):
         super(UpdateRoomScreen, self).__init__(**kwargs)
         self.room_id = room_id
 
-        layout = BoxLayout(orientation='vertical', padding=10, spacing=10)
+        layout = BoxLayout(orientation='vertical', padding=15, spacing=10)
         
         with self.canvas:
             Color(0.129, 0.588, 0.953, 1)  # Cor azul
@@ -32,15 +32,15 @@ class UpdateRoomScreen(Screen):
         layout.add_widget(self.capacity_input)
         layout.add_widget(self.description_input)
 
-        update_button = Button(text="Atualizar", size_hint_y=None, height=50)
+        update_button = Button(text="Atualizar",  size_hint=(0.5, None), size_hint_y=None, height=50, pos_hint={'center_x': 0.5})
         update_button.bind(on_press=self.update_room)
         layout.add_widget(update_button)
 
         back_button = Button(
             text='Voltar', 
-            size_hint=(None, None), 
+            size_hint=(0.2, None), 
             height=50, 
-            font_size=16, 
+            font_size=18, 
             bold=True, 
             background_color=(0.8, 0.2, 0.2, 1), 
             color=(1,1,1,1)
