@@ -1,14 +1,14 @@
 # GenRoomAPP
-O GenroomAPP é um aplicativo móvel desenvolvido em Python com o framework Kivy, projetado para facilitar a reserva de salas e recursos compartilhados na Faculdade Santa-Terezinha-CEST, por meio da integração com a API Genroom.
+O GenRoomAPP é um aplicativo desenvolvido em Python usando o framework Kivy. Ele foi criado com o propósito de facilitar a gestão e reserva de salas e recursos compartilhados na Faculdade Santa-Terezinha-CEST, através da integração com a API GenRoom, para proporcionar uma experiência de usuário eficiente e intuitiva.
 
 # Visão Geral
-O objetivo principal do GenroomAPP é simplificar o processo de reserva de salas de aula, recursos e espaços compartilhados dentro da Faculdade Santa-Terezinha-CEST. Com este aplicativo, os usuários podem:
-* - Criar Salas: Os usuários podem criar novas salas de aula, especificando detalhes como capacidade, localização e recursos disponíveis.
-* - Listar Salas: Visualize todas as salas disponíveis na Faculdade Santa-Terezinha-CEST e obtenha informações detalhadas sobre cada uma.
-* - Reservar uma Sala: Faça reservas para salas de aula de acordo com sua disponibilidade e necessidades.
-* - Visualizar Salas Ocupadas: Veja quais salas estão atualmente ocupadas e quando estarão disponíveis novamente.
-* - Reservar Salas por Período: Reserve salas para uso em intervalos específicos, permitindo um melhor planejamento de aulas e reuniões.
-* - Reservar Recursos Compartilhados: Além de salas de aula, também é possível reservar recursos compartilhados, como projetores, laboratórios e mais.
+O principal objetivo do GenRoomAPP é otimizar e simplificar o processo de reserva de salas, recursos e espaços compartilhados na Faculdade Santa-Terezinha-CEST. Com este aplicativo, os usuários têm a capacidade de:
+* - Criar Salas: Permite aos usuários criar novas salas, inserindo detalhes como capacidade, tipo, e descrição.
+* - Listar Salas: Oferece uma visão global de todas as salas disponíveis, fornecendo informações detalhadas sobre cada uma delas.
+* - Reservar uma Sala: Os usuários podem fazer reservas com base nas necessidades e disponibilidades, simplificando o agendamento de aulas e eventos.
+* - Visualizar Salas Ocupadas: Mostra uma visão em tempo real das ocupações das salas, facilitando o planejamento.
+* - Reservar Salas por Período: Permite a reserva de salas em intervalos específicos, otimizando o uso dos espaços disponíveis.
+* - Reservar Recursos Compartilhados: Além de salas, o aplicativo também permite a reserva de recursos como laboratórios, projetores e outros equipamentos.
 
 # Estrutura do Projeto
 O projeto GenroomAPP segue a seguinte estrutura de diretórios:
@@ -24,5 +24,6 @@ O projeto GenroomAPP segue a seguinte estrutura de diretórios:
 * - Instale as dependências usando pip install -r requirements.txt.
 * - Execute o aplicativo com python main.py.
 
-
+# Conexão com a API
+Atualmente, estamos em processo de desenvolvimento da conexão entre o aplicativo em Kivy e a API GenRoom para uma integração completa e eficiente, possibilitando sincronia de dados em tempo real entre o aplicativo e o banco de dados da Faculdade Santa-Terezinha-CEST. Este avanço permitirá que o GenRoomAPP opere com uma ampla gama de funcionalidades e ofereça uma experiência de usuário mais rica e satisfatória.
 
