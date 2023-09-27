@@ -62,30 +62,12 @@ class CreateRoomScreen(Screen):
         # Layout "botões" de cima
         # caixa vazia para empurrar os botões para cima "a força"
         empty_box = BoxLayout(size_hint=(5, None), height=60)
-        layout_button = BoxLayout(orientation='horizontal', padding=10, spacing=10)
-        # 
-        # Botão para criar a sala
-        create_button = Button(text="Criar Sala", size_hint=(0.3, None), height=50)
-        create_button.bind(on_release=self.create_room)
-        
-        # botão Ver
-        view_button = Button(text="Ver", size_hint=(0.3, None), height=50)
-        view_button.bind(on_release=self.view_room)
-        
-        # botão Editar
-        edith_button = Button(text="Editar", size_hint=(0.3, None), height=50)
-        edith_button.bind(on_release=self.edith_room)
-        
-        # botão Deletar
-        delete_button = Button(text="Deletar", size_hint=(0.4, None), height=50)
-        delete_button.bind(on_release=self.delete_room)
-
-        # 
-        layout.add_widget(layout_button)
-        layout_button.add_widget(create_button) # criar
-        layout_button.add_widget(view_button) # ver
-        layout_button.add_widget(edith_button) # editar
-        layout_button.add_widget(delete_button) # deletar
+        layout = BoxLayout(orientation='vertical', padding=10, spacing=10)
+                
+        # Adicionando botão 'Voltar'
+        back_button = Button(text='Voltar', size_hint=(0.3, None), height=50)
+        back_button.bind(on_release=self.navigate_to_menu)
+        layout.add_widget(back_button)
         
         # caixa vazia
         layout.add_widget(empty_box)
@@ -102,41 +84,5 @@ class CreateRoomScreen(Screen):
         self.background.pos = self.pos
         self.background.size = self.size
     
-    def create_room(self, instance):
-        name = self.name_input.text
-        room_type = self.room_type_button.text
-        capacity = int(self.capacity_input.text)
-        description = self.description_input.text
-        room_category = self.category_button.text
-        shift = self.shift_button.text
-        self.manager.current = 'create_room'
- 
-        
-    def view_room(self, instance):
-        name = self.name_input.text
-        room_type = self.room_type_button.text
-        capacity = self.capacity_input.text
-        description = self.description_input.text
-        category = self.category_button.text
-        shift = self.shift_button.text
-        self.manager.current = 'list'   
-        
-    def edith_room(self, instance):
-        name = self.name_input.text
-        room_type = self.room_type_button.text
-        capacity = self.capacity_input.text
-        description = self.description_input.text
-        category = self.category_button.text
-        shift = self.shift_button.text
-        self.manager.current = 'update_room'
-        
-    def delete_room(self, instance):
-        name = self.name_input.text
-        room_type = self.room_type_button.text
-        capacity = self.capacity_input.text
-        description = self.description_input.text
-        category = self.category_button.text
-        shift = self.shift_button.text
-        
-       # Se conectar com a API e enviar os dados aqui.
-        pass
+    def navigate_to_menu(self, instance):
+        self.manager.current = 'menu'

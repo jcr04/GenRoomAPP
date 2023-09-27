@@ -111,7 +111,7 @@ class ListRoomsScreen(Screen):
             background_color=(0.8, 0.2, 0.2, 1),
             color=(1, 1, 1, 1)
         )
-        back_button.bind(on_release=self.go_back_to_create_room)
+        back_button.bind(on_release=self.navigate_to_menu)
         layout.add_widget(back_button)
 
     def update_background(self, instance, value):
@@ -133,6 +133,5 @@ class ListRoomsScreen(Screen):
         self.box_rect.size = self.box_rect.size = (instance.width + 50, instance.height + 80)  # Ajuste as dimensões
         self.box_line.rectangle = (instance.x - 10, instance.y - 10, instance.width + 50, instance.height + 80)
 
-    def go_back_to_create_room(self, instance):
-        # Switch to "create_room" screen
-        self.manager.current = 'create_room'
+    def navigate_to_menu(self, instance):
+        self.manager.current = 'menu'

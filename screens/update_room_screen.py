@@ -45,7 +45,7 @@ class UpdateRoomScreen(Screen):
             background_color=(0.8, 0.2, 0.2, 1), 
             color=(1,1,1,1)
         )
-        back_button.bind(on_release=self.go_back)
+        back_button.bind(on_release=self.navigate_to_menu)
         layout.add_widget(back_button)
 
         self.add_widget(layout)
@@ -68,6 +68,5 @@ class UpdateRoomScreen(Screen):
         updated_room = update_room_in_database(self.room_id, data)
         # Atualizar a interface do usuário ou navegar para uma nova tela, mostrando os detalhes atualizados
 
-    def go_back(self, instance):
-        # Switch to previous screen or a specific screen
-        self.manager.current = 'create_room'
+    def navigate_to_menu(self, instance):
+        self.manager.current = 'menu'
