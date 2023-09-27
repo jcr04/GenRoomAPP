@@ -59,20 +59,20 @@ class HomeScreen(Screen):
         )
 
         # Botão de login
-        login_button = Button(
+        menu_button = Button(
             text='Entrar',
             size_hint=(None, None),
             size=(200, 50),
             pos_hint={'top': 0.4, 'center_x': 0.5}
         )
-        login_button.bind(on_release=self.navigate_to_other_page)
+        menu_button.bind(on_release=self.navigate_to_menu)
 
         # Adicione os widgets à tela
         self.add_widget(genroom_label)
         self.add_widget(user_input)
         self.add_widget(password_input)
-        self.add_widget(login_button)
+        self.add_widget(menu_button)
 
-    def navigate_to_other_page(self, instance):
-        self.manager.current = 'create_room'  # 'outra_tela' é o nome da próxima tela
+    def navigate_to_menu(self, instance):
+        self.manager.current = 'menu'  # 'menu' é o nome da tela do menu
         
