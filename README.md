@@ -25,5 +25,24 @@ O projeto GenroomAPP segue a seguinte estrutura de diretórios:
 * - Execute o aplicativo com python main.py.
 
 # Conexão com a API
-Atualmente, estamos em processo de desenvolvimento da conexão entre o aplicativo em Kivy e a API GenRoom para uma integração completa e eficiente, possibilitando sincronia de dados em tempo real entre o aplicativo e o banco de dados da Faculdade Santa-Terezinha-CEST. Este avanço permitirá que o GenRoomAPP opere com uma ampla gama de funcionalidades e ofereça uma experiência de usuário mais rica e satisfatória.
+O aplicativo GenRoomAPP está em fase avançada de desenvolvimento, implementando a integração com a API GenRoom, promovendo uma sincronização de dados ágil e em tempo real com o banco de dados da Faculdade Santa-Terezinha-CEST. Esta integração está sendo desenvolvida para possibilitar uma série de operações, tais como:
 
+* Criação de Salas: O aplicativo permite a criação de novas salas diretamente, com os dados sendo imediatamente refletidos no banco de dados central através da API.
+
+* Atualização de Salas: Os usuários podem atualizar detalhes específicos das salas, como nome, capacidade e descrição, e tais alterações são prontamente refletidas no banco de dados.
+
+* Consulta de Salas: O aplicativo busca dados em tempo real do banco de dados, permitindo aos usuários visualizar detalhes atualizados das salas.
+
+A arquitetura modular e robusta da nossa aplicação e API permite uma expansão futura fácil e eficiente, abrindo caminho para a adição de novas funcionalidades e melhorias.
+
+## Como Funciona a Conexão com a API
+O aplicativo se conecta à API GenRoom utilizando o protocolo HTTP, mais especificamente através de requisições GET para buscar dados e POST e PUT para criar e atualizar dados, respectivamente.
+
+´url = 'http://127.0.0.1:5001/api/rooms'
+response = requests.get(url)
+
+if response.status_code == 200:
+    rooms = response.json()
+    # Processar os dados recebidos
+else:
+    print(f'Error fetching rooms: {response.status_code}')´
