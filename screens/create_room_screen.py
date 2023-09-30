@@ -5,6 +5,7 @@ from kivy.uix.textinput import TextInput
 from kivy.uix.screenmanager import Screen
 from kivy.graphics import Color, Rectangle
 from kivy.uix.dropdown import DropDown
+import requests
 
 
 class CreateRoomScreen(Screen):
@@ -63,6 +64,11 @@ class CreateRoomScreen(Screen):
         # caixa vazia para empurrar os botões para cima "a força"
         empty_box = BoxLayout(size_hint=(5, None), height=60)
         layout = BoxLayout(orientation='vertical', padding=10, spacing=10)
+        
+        submit_button = Button(text='Criar Sala', size_hint=(0.3, None), height=50)
+        submit_button.bind(on_release=self.create_room)
+        layout.add_widget(submit_button)
+        
                 
         # Adicionando botão 'Voltar'
         back_button = Button(text='Voltar', size_hint=(0.3, None), height=50)
@@ -79,6 +85,25 @@ class CreateRoomScreen(Screen):
         layout.add_widget(self.category_button)
         #
         self.add_widget(layout) 
+    
+    def create_room(self, instance):
+        url = 'http://127.0.0.1:5001/api/rooms'
+        room_data = {
+            'name': self.name_input.text,
+            'room_type': self.room_type_button.text,
+            'capacity': self.capacity_input.text,
+            'description': self.description_input.text,
+            'room_category': self.category_button.text,
+            'shift': self.shift_button.text
+        }
+        
+        response = requests.post(url, json=room_data)
+        
+        if response.status_code == 201:
+            print('Room created successfully')
+            # You might want to navigate the user to another screen or clear the input fields here.
+        else:
+            print(f'Error: Unable to create room - {response.status_code}')
                
     def update_background(self, instance, value):
         self.background.pos = self.pos

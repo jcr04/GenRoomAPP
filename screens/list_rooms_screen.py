@@ -5,31 +5,7 @@ from kivy.uix.button import Button
 from kivy.uix.screenmanager import Screen
 from kivy.graphics import Color, Rectangle, Line
 from kivy.uix.dropdown import DropDown
-
-
-# Simulação de chamada à API para obter detalhes de uma sala.
-def get_room_details(room_name):
-    rooms_database = {
-        'Sala 11': {
-            'name': 'Sala 11',
-            'capacity': 30,
-            'equipments': ['Projetor', 'Ar-condicionado'],
-            'description': 'Uma sala para reuniões e apresentações.'
-        },
-        'Sala 12': {
-            'name': 'Sala 12',
-            'capacity': 20,
-            'equipments': ['Projetor'],
-            'description': 'Sala para pequenas reuniões.'
-        },
-        'Laboratório 1': {
-            'name': 'Laboratório 1',
-            'capacity': 25,
-            'equipments': ['Computadores', 'Ar-condicionado', 'Projetor'],
-            'description': 'Laboratório para aulas práticas.'
-        }
-    }
-    return rooms_database.get(room_name, None)
+import requests
 
 
 class RoomItem(Button):
@@ -41,8 +17,7 @@ class RoomItem(Button):
         self.bind(on_release=self.show_details)
 
     def show_details(self, instance):
-        room_details = get_room_details(self.text)
-        self.callback(room_details)
+        self.callback(self.room_info)
 
 
 class ListRoomsScreen(Screen):
@@ -62,6 +37,7 @@ class ListRoomsScreen(Screen):
             Color(0.129, 0.588, 0.953, 1)
             self.background = Rectangle(pos=self.pos, size=self.size)
         self.bind(size=self.update_background)
+
 
     def _create_layout(self):
         # Main layout
@@ -92,10 +68,16 @@ class ListRoomsScreen(Screen):
     def _setup_dropdown_and_buttons(self, layout):
         # Dropdown setup
         self.room_dropdown = DropDown()
-        mock_rooms = [{'name': 'Sala 11'}, {'name': 'Sala 12'}, {'name': 'Laboratório 1'}]
-        for room in mock_rooms:
-            room_btn = RoomItem(room_info=room, callback=self.update_details, size_hint_y=None, height=60)
-            self.room_dropdown.add_widget(room_btn)
+
+        response = requests.get('http://127.0.0.1:5001/api/rooms')
+        if response.status_code == 200:
+            rooms = response.json()
+            for room in rooms:
+                room_btn = RoomItem(room_info=room, callback=self.update_details, size_hint_y=None, height=60)
+                self.room_dropdown.add_widget(room_btn)
+        else:
+            # Adicionar código para lidar com erro ao buscar salas
+            print(f"Error fetching rooms: {response.status_code}")
 
         main_button = Button(text='Selecione uma Sala', size_hint=(None, None), height=70, font_size=20, bold=True, background_color=(0.129, 0.588, 0.953, 1), color=(1, 1, 1, 1))
         main_button.bind(on_release=self.room_dropdown.open)
@@ -123,7 +105,6 @@ class ListRoomsScreen(Screen):
             details = (
                 f"Nome: {room_details['name']}\n"
                 f"Capacidade: {room_details['capacity']}\n"
-                f"Equipamentos: {', '.join(room_details['equipments'])}\n"
                 f"Descrição: {room_details['description']}"
             )
             self.details_label.text = details
