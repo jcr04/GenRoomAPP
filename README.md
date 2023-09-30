@@ -38,11 +38,4 @@ A arquitetura modular e robusta da nossa aplicação e API permite uma expansão
 ## Como Funciona a Conexão com a API
 O aplicativo se conecta à API GenRoom utilizando o protocolo HTTP, mais especificamente através de requisições GET para buscar dados e POST e PUT para criar e atualizar dados, respectivamente.
 
-´url = 'http://127.0.0.1:5001/api/rooms'
-response = requests.get(url)
-
-if response.status_code == 200:
-    rooms = response.json()
-    # Processar os dados recebidos
-else:
-    print(f'Error fetching rooms: {response.status_code}')´
+![Alt text](Screenshot_9.png)
