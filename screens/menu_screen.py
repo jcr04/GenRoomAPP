@@ -49,7 +49,7 @@ class MenuScreen(Screen):
         self.manager.current = 'update_room'
         
     def delete_room(self, instance):
-        # Ajuste a lógica aqui
+        self.manager.current = 'delete'
         pass
 
 
